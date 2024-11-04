@@ -35,12 +35,25 @@ let preguntasFase2 = [
 
 let respuestasFase2 = [2, 1, 1, 1, 1];
 
+
+function numberNoString(mensaje) {
+    let respuesta;
+    do {
+        respuesta = prompt(mensaje);
+        if (isNaN(respuesta)) {
+            alert("¡Tenés que escribir un número!");
+        }
+    } while (isNaN(respuesta));
+    return Number(respuesta);
+}
+
+
 // Función para jugar una fase de preguntas
 function jugarFase(preguntas, respuestas) {
     let aciertos = 0;
 
     for (let i = 0; i < preguntas.length; i++) {
-        let respuestaUsuario = Number(prompt(preguntas[i]));
+        let respuestaUsuario = numberNoString(preguntas[i]);
         if (respuestaUsuario === respuestas[i]) {
             aciertos++;
             alert("¡Correcto!");
